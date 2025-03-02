@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -10,10 +5,16 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+# Use the JFrog Artifactory NuGet restore task
+- task: ArtifactoryNuGet@2
+  inputs:
+    command: 'restore'  # Restore NuGet packages
+    arguments: '**/nuget-test-project.nuspec'  # Specify your .nuspec file or the path pattern
+    artifactoryService: 'rt'  # Artifactory service connection
+    targetResolveRepo: 'jeremyl-nuget'  # The Artifactory repository to resolve packages
+    nugetProtocolVersion: 'v3'  # Use NuGet v3 protocol for compatibility and performance
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# Optional: Add other steps like build, test, deploy, etc.
+- script: echo "Build and deploy steps would go here"
+  displayName: 'Run build and deploy steps'
+
