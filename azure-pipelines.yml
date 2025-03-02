@@ -9,7 +9,7 @@ steps:
 - task: ArtifactoryNuGet@2
   inputs:
     command: 'restore'  # Restore NuGet packages
-    arguments: '**/nuget-test-project.nuspec'  # Specify your .nuspec file or the path pattern
+    arguments: '**/nuget-test-project.nuspec --ignore-ssl-errors'  # Specify your .nuspec file or the path pattern
     artifactoryService: 'rt'  # Artifactory service connection
     targetResolveRepo: 'jeremyl-nuget'  # The Artifactory repository to resolve packages
     nugetProtocolVersion: 'v3'  # Use NuGet v3 protocol for compatibility and performance
