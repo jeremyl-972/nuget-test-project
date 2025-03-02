@@ -11,7 +11,7 @@ steps:
     command: 'restore'
     artifactoryService: 'rt'
     targetResolveRepo: 'jeremyl-nuget'
-    solutionPath: '**/*.sln'
+    solutionPath: 'MySolution.sln'
     nugetProtocolVersion: 'v3'
 
 # Optional: Add other steps like build, test, deploy, etc.
