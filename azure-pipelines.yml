@@ -8,11 +8,11 @@ steps:
 # Use the JFrog Artifactory NuGet restore task
 - task: ArtifactoryNuGet@2
   inputs:
-    command: 'restore'  # Restore NuGet packages
-    arguments: 'nuget-test-project.nuspec'  # Specify your .nuspec file or the path pattern
-    artifactoryService: 'rt'  # Artifactory service connection
-    targetResolveRepo: 'jeremyl-nuget'  # The Artifactory repository to resolve packages
-    nugetProtocolVersion: 'v3'  # Use NuGet v3 protocol for compatibility and performance
+    command: 'restore'
+    artifactoryService: 'rt'
+    targetResolveRepo: 'jeremyl-nuget'
+    solutionPath: '**/*.sln'
+    nugetProtocolVersion: 'v3'
 
 # Optional: Add other steps like build, test, deploy, etc.
 - script: echo "Build and deploy steps would go here"
