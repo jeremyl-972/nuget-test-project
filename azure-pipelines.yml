@@ -6,13 +6,12 @@ pool:
 
 steps:
 # Use the JFrog Artifactory NuGet restore task
-- task: ArtifactoryNuGet@2
+- task: JFrogNuGet@1
   inputs:
     command: 'restore'
-    artifactoryService: 'rt'
+    artifactoryConnection: 'rt'
     targetResolveRepo: 'jeremyl-nuget'
-    solutionPath: 'MySolution.sln'
-    nugetProtocolVersion: 'v3'
+    solutionPath: '**/*.sln'
 
 # Optional: Add other steps like build, test, deploy, etc.
 - script: echo "Build and deploy steps would go here"
